@@ -193,9 +193,7 @@ pub fn render(f: &mut Frame, area: Rect, st: &IssueListState) {
     let count_total = st.entries.len();
     let count_checked = st.entries.iter().filter(|e| e.checked).count();
     let cursor_pos = if count_total == 0 { 0 } else { st.cursor + 1 };
-    let header = format!(
-        "{count_checked}/{count_total} selected · row {cursor_pos}/{count_total}"
-    );
+    let header = format!("{count_checked}/{count_total} selected · row {cursor_pos}/{count_total}");
     widgets::header(f, main[0], "Issues found", &header);
 
     let block = widgets::bordered_block("Items");

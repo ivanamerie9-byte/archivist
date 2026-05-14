@@ -859,9 +859,7 @@ fn build_action_plan(list: &IssueListState, report: &ScanReport, _config: &Confi
                         let target_series = report.titles.iter().find(|t| {
                             t.library == LibraryKind::Series
                                 && t.folder != title.folder
-                                && t.folder
-                                    .file_name()
-                                    .and_then(|n| n.to_str())
+                                && t.folder.file_name().and_then(|n| n.to_str())
                                     == Some(canonical.as_str())
                         });
                         if let Some(target) = target_series {
