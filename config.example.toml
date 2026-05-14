@@ -1,0 +1,18 @@
+# recover-coverless configuration
+# Copy this file to `config.toml` next to the executable and fill in your TMDB API key.
+
+# Get a free API key at https://www.themoviedb.org/settings/api
+# Settings can also be edited inside the app via the `k` shortcut.
+tmdb_api_key = ""
+
+# Number of parallel poster downloads / pipeline workers.
+concurrency = 8
+
+# Run a TMDB connection check on startup.
+test_on_startup = true
+
+[libraries.movies]
+root = "V:\\library\\Cinema Theatre"
+
+[libraries.series]
+root = "V:\\library\\Origial Series"

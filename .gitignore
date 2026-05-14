@@ -1,0 +1,9 @@
+/target
+/config.toml
+/*.log
+/archivist.log*
+/fixtures/
+/_local/
+*.exe
+.vscode/
+.idea/

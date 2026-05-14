@@ -1,0 +1,62 @@
+[package]
+name = "archivist"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.80"
+authors = ["Ivan Amerie <ivanamerie9@gmail.com>"]
+description = "TUI tool that finds movies and TV series in a Windows media library that lack cover art and Windows folder icons, then fetches posters from TMDB and writes folder.jpg + .ico + desktop.ini."
+license = "MIT"
+repository = "https://github.com/ivanamerie9-byte/archivist"
+readme = "README.md"
+keywords = ["tui", "media", "library", "tmdb", "windows"]
+categories = ["command-line-utilities", "multimedia"]
+
+[[bin]]
+name = "archivist"
+path = "src/main.rs"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+strip = "symbols"
+opt-level = 3
+
+[dependencies]
+ratatui = "0.29"
+crossterm = { version = "0.28", features = ["event-stream"] }
+ratatui-image = "4"
+image = { version = "0.25", default-features = false, features = ["jpeg", "png", "webp"] }
+ico = "0.4"
+reqwest = { version = "0.12", default-features = false, features = ["rustls-tls", "json", "stream"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "sync", "fs", "time", "io-util"] }
+tokio-util = "0.7"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+toml = "0.8"
+walkdir = "2.5"
+regex = "1"
+once_cell = "1"
+unicode-normalization = "0.1"
+deunicode = "1"
+clap = { version = "4.5", features = ["derive"] }
+governor = "0.7"
+futures = "0.3"
+anyhow = "1"
+thiserror = "2"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tracing-appender = "0.2"
+directories = "5"
+sha2 = "0.10"
+bytes = "1"
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.58", features = [
+    "Win32_Foundation",
+    "Win32_Storage_FileSystem",
+] }
+widestring = "1"
+encoding_rs = "0.8"
+
+[dev-dependencies]
+tempfile = "3"
