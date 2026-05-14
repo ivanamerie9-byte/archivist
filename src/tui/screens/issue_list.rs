@@ -202,7 +202,7 @@ pub fn render(f: &mut Frame, area: Rect, st: &IssueListState) {
 
     let visible = inner.height as usize;
     let scroll_top = st.cursor.saturating_sub(visible.saturating_sub(1) / 2);
-    let scroll_top = scroll_top.min(st.entries.len().saturating_sub(visible).max(0));
+    let scroll_top = scroll_top.min(st.entries.len().saturating_sub(visible));
 
     let mut lines: Vec<Line> = Vec::new();
     for (i, e) in st.entries.iter().enumerate().skip(scroll_top).take(visible) {

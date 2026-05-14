@@ -84,7 +84,7 @@ pub async fn execute(
     }
 
     // Phase 2: covers — parallel.
-    stream::iter(covers.into_iter())
+    stream::iter(covers)
         .for_each_concurrent(concurrency.max(1), |action| {
             let tmdb = tmdb.clone();
             let progress = progress.clone();
